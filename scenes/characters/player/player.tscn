@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://rld6rkbkv4oo"]
+
+[ext_resource type="SpriteFrames" uid="uid://deqjr3osc7b32" path="res://resources/player_spriteframes.tres" id="1_7uws0"]
+[ext_resource type="Script" uid="uid://b5c0gw53jwm3b" path="res://scenes/characters/player/player.gd" id="1_hss88"]
+[ext_resource type="Script" uid="uid://4uwfkjctmqe8" path="res://scripts/node_state_controller/node_state_controller.gd" id="2_t61fv"]
+[ext_resource type="Script" uid="uid://b16fylimdeemi" path="res://scenes/characters/player/idle_state.gd" id="3_686vu"]
+[ext_resource type="Script" uid="uid://68dmpfioi123" path="res://scenes/characters/player/walk_state.gd" id="5_qd3e3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7uws0"]
+size = Vector2(12, 11)
+
+[node name="Player" type="CharacterBody2D" unique_id=540812541]
+script = ExtResource("1_hss88")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1258323423]
+position = Vector2(0, -8)
+sprite_frames = ExtResource("1_7uws0")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1914042687]
+position = Vector2(0, -5.5)
+shape = SubResource("RectangleShape2D_7uws0")
+
+[node name="NodeStateController" type="Node" parent="." unique_id=1089348136 node_paths=PackedStringArray("initial_node_state")]
+script = ExtResource("2_t61fv")
+initial_node_state = NodePath("idle")
+
+[node name="idle" type="Node" parent="NodeStateController" unique_id=1142573735 node_paths=PackedStringArray("player", "animated_sprite")]
+script = ExtResource("3_686vu")
+player = NodePath("../..")
+animated_sprite = NodePath("../../AnimatedSprite2D")
+
+[node name="walk" type="Node" parent="NodeStateController" unique_id=1446682711 node_paths=PackedStringArray("player", "animated_sprite")]
+script = ExtResource("5_qd3e3")
+player = NodePath("../..")
+animated_sprite = NodePath("../../AnimatedSprite2D")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=371450852]
+limit_left = 0
+limit_top = -360

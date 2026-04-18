@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cejfakirn6ppl"]
+
+[ext_resource type="TileSet" uid="uid://dwfpdfq17oi40" path="res://resources/tileset.tres" id="1_ksju7"]
+
+[node name="Level 1" type="Node2D" unique_id=1099355946]
+
+[node name="Background" type="TileMapLayer" parent="." unique_id=440017695]
+tile_set = ExtResource("1_ksju7")

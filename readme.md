@@ -9,6 +9,7 @@ A repo where I make a godot platformer game with kenney's 1 bit pack
 - Setup the Project
 - Loaded the Asset
 - Setup Input
+- Created Player Scene with Idle and Walk States
 
 ## Assets
 
